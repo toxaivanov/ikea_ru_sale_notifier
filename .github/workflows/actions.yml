@@ -25,9 +25,11 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            cd ~
-            echo $${{ secrets.TEST }}
-            exit 0
+            cd ~/ikea_ru_sale_notifier
+            git pull 
+            poetry install --no-dev
+            poetry update
+            poetry run python main.py
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY}}
