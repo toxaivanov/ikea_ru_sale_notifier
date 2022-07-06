@@ -26,7 +26,7 @@ jobs:
         with:
           command: |
             cd ~
-            export POETRY_IFTTT_WEBHOOK=$POETRY_IFTTT_WEBHOOK
+            export POETRY_IFTTT_WEBHOOK=$${{env.POETRY_IFTTT_WEBHOOK}}
             echo POETRY_IFTTT_WEBHOOK
             exit 0
           host: ${{ secrets.HOST }}
