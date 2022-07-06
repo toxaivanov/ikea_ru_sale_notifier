@@ -14,18 +14,20 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  POETRY_IFTTT_WEBHOOK: ${{ secrets.TEST }}
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: ls -a via OPEN SSH Private Key
+      - name: deploy script
         uses: fifsky/ssh-action@master
         with:
           command: |
             cd ~
-            export POETRY_IFTTT_WEBHOOK=${{ secrets.TEST }}
             echo POETRY_IFTTT_WEBHOOK
-            exit 1
+            exit 0
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY}}
