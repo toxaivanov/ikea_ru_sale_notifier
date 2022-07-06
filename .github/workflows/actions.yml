@@ -26,7 +26,7 @@ jobs:
         with:
           command: |
             cd ~
-            echo $POETRY_IFTTT_WEBHOOK
+            echo $${{ secrets.TEST }}
             exit 0
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
