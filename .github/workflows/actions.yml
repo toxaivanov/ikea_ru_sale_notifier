@@ -29,7 +29,7 @@ jobs:
             git pull 
             poetry install --no-dev
             poetry update --no-dev
-            export POETRY_IFTTT_WEBHOOK: ${{ secrets.IFTTT_WEBHOOK }}
+            export POETRY_IFTTT_WEBHOOK=${{ secrets.IFTTT_WEBHOOK }}
             poetry run python main.py
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
