@@ -21,7 +21,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: deploy script
+      - name: install dependencies
         uses: fifsky/ssh-action@master
         with:
           command: |
@@ -29,6 +29,15 @@ jobs:
             git pull 
             poetry install --no-dev
             poetry update --no-dev
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY}}
+          args: "-tt"
+
+      - name: run script
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
             export POETRY_IFTTT_WEBHOOK=${{ secrets.IFTTT_WEBHOOK }}
             nohup poetry run python main.py > ../output.log &
           host: ${{ secrets.HOST }}
