@@ -38,6 +38,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
+            cd ~/ikea_ru_sale_notifier
             export POETRY_IFTTT_WEBHOOK=${{ secrets.IFTTT_WEBHOOK }}
             nohup poetry run python main.py > ../output.log &
           host: ${{ secrets.HOST }}
