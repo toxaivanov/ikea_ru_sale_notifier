@@ -30,7 +30,7 @@ jobs:
             poetry install --no-dev
             poetry update --no-dev
             export POETRY_IFTTT_WEBHOOK=$POETRY_IFTTT_WEBHOOK
-            nohup poetry run python main.py &
+            poetry run python main.py
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY}}
