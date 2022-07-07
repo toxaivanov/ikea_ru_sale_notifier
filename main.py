@@ -46,11 +46,21 @@ def main():
         driver.get(SRC_PAGE)
 
         src = driver.page_source
-        if "Прием новых заявок запустится немного позже" not in src:
-            send_notification()
-            with open("../page.log", "w", encoding="utf8") as file:
-                file.write(src)
-            break
+
+        if "странице ожидания" in src:
+            sleep(120)
+
+            if "Прием новых заявок запустится немного позже" not in src:
+                send_notification()
+                with open("../page.log", "w", encoding="utf8") as file:
+                    file.write(src)
+                break
+        else:
+            if "Прием новых заявок запустится немного позже" not in src:
+                send_notification()
+                with open("../page.log", "w", encoding="utf8") as file:
+                    file.write(src)
+                break
 
         sleep(12)
 
