@@ -50,6 +50,8 @@ def main():
         if "странице ожидания" in src:
             sleep(120)
 
+            src = driver.page_source
+
             if "Прием новых заявок запустится немного позже" not in src:
                 send_notification()
                 with open("../page.log", "w", encoding="utf8") as file:
