@@ -46,7 +46,7 @@ def main():
         driver.get(SRC_PAGE)
 
         src = driver.page_source
-        if "Прием новых заявок запустится немного позже" not in src:
+        if "Прием новых заявок запустится немного позже" in src:
             send_notification()
             break
 
