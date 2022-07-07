@@ -26,8 +26,6 @@ def send_notification():
     )
     headers = {"Content-Type": "application/json"}
 
-    print("wh", IFTTT_WEBHOOK)
-
     requests.request("POST", IFTTT_WEBHOOK, headers=headers, data=payload)
 
 
